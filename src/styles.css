@@ -1,0 +1,79 @@
+body{
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  background-image: url('images/seamless-pattern-2740688_640.png');
+  font-family: partyConfetti, monospace;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-x: hidden;
+}
+
+#header, #footer{
+  width: 100vw;
+  display: flex;
+  background-color: #5fbabd;
+  justify-content: center;
+  /* padding: 1%; */
+  gap: 60px;
+  font-size: 2em;
+}
+
+@font-face {
+  font-family: partyConfetti;
+  src: url(fonts/PartyConfettiRegular-eZOn3.ttf);
+}
+
+.subheader {
+  font-size: 2em;
+  font-family: monospace;
+  text-decoration: underline overline;
+  /* padding: 2vh 0 2vh 0; */
+}
+
+#content{
+  padding: 20px;
+  background-color: whitesmoke;
+  width: 850px;
+  display: flex;
+  flex-direction: column;
+  gap: 3vh;
+  min-height: 100vh-(2%);
+}
+
+.snaps, .founders{
+  display: flex;
+  gap:20px;
+  padding: 3vh 0 3vh 0;
+}
+
+td{
+  text-align: left;
+  padding: 0 10px;
+}
+
+table{
+  padding: 3vh 4vw 3vh 4vw;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  margin: auto;
+  font-weight: bold;
+  font-size: large;
+  background-color: #33dadf;
+  font-size: 1.3em;
+  border-radius: 10px;
+}
+
+th{
+  text-decoration: underline;
+  text-align: center;
+}
+
+.menu:hover, .contact:hover, .home:hover{
+  background-color: skyblue;
+  cursor: pointer;
+}
+
+#header > div, #footer{
+  padding: .5em;
+}

@@ -1,10 +1,20 @@
-const snap = function(){
+const snap_box = function(){
   const snap_box = get_div_container()
-  const text_div = build_text_container('Snap')
-  var image_element = document.createElement("img")
-  image_element.setAttribute("src", "https://en.wikipedia.org/wiki/Restaurant#/media/File:Restaurant_N%C3%A4sinneula.jpg");
+  const text_div = build_text_container('Snaps')
+  text_div.classList.add('subheader')
+  var image_element1 = new Image(400, 400)
+  image_element1.src = "https://upload.wikimedia.org/wikipedia/commons/9/9a/Ravintola_Kuappi_-_Veikonkatu_1_-_Iisalmi_-_2.jpg";
+
+  var image_element2 = new Image(400, 400)
+  image_element2.src = "https://upload.wikimedia.org/wikipedia/commons/d/da/Restaurant_Kuappi_-_inside_-_Veikonkatu_1_-_Iisalmi.jpg";
+
+  const image_div = get_div_container()
+  image_div.classList.add('snaps')
+  image_div.appendChild(image_element1)
+  image_div.appendChild(image_element2)
   snap_box.classList.add('snap_box')
-  snap_box.appendChild(text_div).appendChild(image_element)
+  snap_box.appendChild(text_div)
+  snap_box.appendChild(image_div)
 
   return snap_box
 }
@@ -14,8 +24,10 @@ const open_hours = function(){
   const box = get_div_container()
   box.classList.add('open-hours')
   const text_div = build_text_container('Open Hours')
+  text_div.classList.add('subheader')
+  box.appendChild(text_div);
   const table = document.createElement("table")
-  const table_header_data = ["Day", "Opening Time", "Closing Time"]
+  const table_header_data = ["Day", "Opening", "Closing"]
   
   const header_row = table.insertRow()
 
@@ -28,7 +40,7 @@ const open_hours = function(){
   const timings = [
     { day: "Monday", opening: "10:00", closing: "22:00" },
     { day: "Tuesday", opening: "10:00", closing: "22:00" },
-    { day: "Wednesday", opening: "10:00", closing: "22:00" },
+    { day: "Wednesday", opening: "11:00", closing: "23:00" },
     { day: "Thursday", opening: "10:00", closing: "22:00" },
     { day: "Friday", opening: "10:00", closing: "23:00" },
     { day: "Saturday", opening: "11:00", closing: "23:00" },
@@ -42,16 +54,20 @@ const open_hours = function(){
     const opening = row.insertCell(1)
     const closing = row.insertCell(2)
 
-    day.innerHTML = timing[day]
-    opening.innerHTML = timing[opening]
-    closing.innerHTML = timing[closing]
+    day.innerHTML = timing.day
+    opening.innerHTML = timing.opening
+    closing.innerHTML = timing.closing
   })
+
+  box.appendChild(table);
+
+  return box
 }
 
 const build_text_container = function(text){
   const newContent = document.createTextNode(text);
-  var div = document.createElement("div")
-  div.append(newContent);
+  const div = get_div_container()
+  div.appendChild(newContent);
 
   return div
 }
@@ -62,15 +78,7 @@ const get_div_container = function(){
   return div
 }
 
-const founders = function(){
-  const founders_box = get_div_container()
-  const text_div = build_text_container('Founders')
-  const image_element1 = document.createElement("img")
-  image_element1.setAttribute("src", "https://en.wikipedia.org/wiki/Ron_Weasley#/media/File:Ron_Weasley_poster.jpg");
-  const image_element2 = document.createElement("img")
-  image_element1.setAttribute("src", "https://en.wikipedia.org/wiki/Harry_Potter_(character)#/media/File:Harry_Potter_character_poster.jpg");
-  founders_box.classList.add('founders_box')
-  founders_box.appendChild(text_div).appendChild(image_element1).appendChild(image_element2)
+// const home = snap()
+// home.insertAdjacentElement('afterend', open_hours()).insertAdjacentElement('afterend', founders())
 
-  return founders_box
-}
+export { snap_box, open_hours, build_text_container }
